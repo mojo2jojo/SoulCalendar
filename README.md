@@ -94,12 +94,12 @@ Here is what this little application demonstrates:
 	2. [Update user by userid](#update-user-by-userid)
 	3. [Get details of user by id](#get-details-of-user-by-id)
 	4. [Get all user](#get-all-user)
-	5. [Create event | Book slot](#create-event)
+	5. [Create event | Book slot](#create-event--book-slot)
 	6. [List all events of a user by userId](#list-all-events-of-a-user-by-userid)
-	7. [Get details of a event by eventId](#get-details-of-a-event-by-eventid)
+	7. [Get details of an event by eventId](#get-details-of-an-event-by-eventid)
 	8. [Find conflict slots for a userid](#find-conflict-slots-for-a-userid)
 	9. [Find favourable slot for a list of userId](#find-favourable-slot-for-a-list-of-userid)
-	10. [Recur existing event by event id ](#recur-existing-event-by event-id)
+	10. [Recur existing event by event id ](#recur-existing-event-by-event-id)
 
 #### Create user
 

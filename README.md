@@ -6,7 +6,14 @@ This README provides an overview of the **Soul Calendar Service**, including its
   <img src="https://media1.tenor.com/m/0xj4Ir5KJJYAAAAC/calendar-invite.gif" alt="animated" />
 </p>
 
-## Table of Contents
+## Title
+
+* [Requirements](#requirements)
+* [How to start?](#how-to-start)
+* [About service & choices made](#about-service--choices-made)
+* [Endpoints you can call](#endpoints-you-can-call)
+* [Future improvements](#future-improvements)
+* [Contact](#contact)
 
 ## Requirements
 
@@ -66,7 +73,7 @@ Here is what this little application demonstrates:
 #### Following are the reason to use (Biggest reason is simple to use)
 *   Can run as an in-memory database.
 *   Simple and quick to get started with, and is light weight (only 2MB).
-*   SQL compliant so it compatible with most relational databases.
+*   SQL compliant so it is compatible with most relational databases.
 
 #### Access H2 db console
 * It automatically starts when you start service
@@ -81,6 +88,18 @@ Here is what this little application demonstrates:
 	spring.h2.console.enabled=true
 	``` 
 ## Endpoints you can call
+
+* Following operation can be performed.
+	1. [Create user](#create-user)
+	2. [Update user by userid](#update-user-by-userid)
+	3. [Get details of user by id](#get-details-of-user-by-id)
+	4. [Get all user](#get-all-user)
+	5. [Create event | Book slot](#create-event)
+	6. [List all events of a user by userId](#list-all-events-of-a-user-by-userid)
+	7. [Get details of a event by eventId](#get-details-of-a-event-by-eventid)
+	8. [Find conflict slots for a userid](#find-conflict-slots-for-a-userid)
+	9. [Find favourable slot for a list of userId](#find-favourable-slot-for-a-list-of-userid)
+	10. [Recur existing event by event id ](#recur-existing-event-by event-id)
 
 #### Create user
 
@@ -135,7 +154,7 @@ Here is what this little application demonstrates:
 	```
 * Note: None
 
-####  Get details of user by Id
+#### Get details of user by Id
 
 * HTTP Method:  GET
 * URL:  http://localhost:8080/api/user/{userId}
@@ -155,7 +174,7 @@ Here is what this little application demonstrates:
 	```
 * Note: None
 
-####  Get all user
+#### Get all user
 
 * HTTP Method:  GET
 * URL:  http://localhost:8080/api/user
@@ -177,7 +196,7 @@ Here is what this little application demonstrates:
 	```
 * Note: No pagination added
 
-#### Create event
+#### Create event | Book slot
 
 * HTTP Method:  POST
 * URL:  http://localhost:8080/api/events
@@ -209,7 +228,7 @@ Here is what this little application demonstrates:
   * Host id is taken in body because auth does not exist. Otherwise we can fetch it from token. 
   * Day is not considered. You can book slot for alone or with many people using this same endpoint for a given startAt or endAt
 
-####  List all events of a user by  userId
+#### List all events of a user by userId
 
 * HTTP Method:  GET
 * URL:  http://localhost:8080/api/events?userId={someId}
@@ -227,7 +246,7 @@ Here is what this little application demonstrates:
 	* No pagination added
 	* Return list of eventId. Get details of all events by calling below api.
 
-####  Get details of a event by  eventId
+#### Get details of an event by eventId
 
 * HTTP Method:  GET
 * URL:  http://localhost:8080/api/events/{eventId}
@@ -284,12 +303,12 @@ Here is what this little application demonstrates:
 	```
 * Note: 
 	* Returns a list of conflicts along with conflicting even per conflict.
-	* A bug exists. "startAt" and "endAt" time is modified in response. Only check id and then do details to know the full info of event.
+	* A flaw exists. In response, the "startAt" and "endAt" times are overridden. Only check the id and then the details to get the entire event information.
 	* Conflict is check for all event. No duration is taken. 
 	* Pagination is not present
 
 
-####  Find favourable slot for a list of userId
+#### Find favourable slot for a list of userId
 
 * HTTP Method:  POST
 * URL:   http://localhost:8080/api/events/findFavourableSlot
@@ -314,6 +333,31 @@ Here is what this little application demonstrates:
   * Favourable slot is calculated from current time. 
   * Max limit for Favourable slot is 1 year from current time. 
   * If no slot exist EndAt & StartAt time will be same
+
+#### Recur existing event by event id  
+
+* HTTP Method:  POST
+* URL: http://localhost:8080/api/events/recurringMeeting
+* Curl command 
+	```
+	curl --location 'http://localhost:8080/api/events/recurringMeeting' \
+	--header 'Content-Type: application/json' \
+	--data '{
+		"eventId": 1,
+		"offsetInDays": 10,
+		"frequency": 3
+	}'
+	```
+* Response 
+	```
+	{
+		Created
+	}
+	```
+* Note:  
+  * Users can recur an existing event only.
+  * User authorization to recur event is not checked. 
+
 
 ## Future Improvements
 

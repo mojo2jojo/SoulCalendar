@@ -83,9 +83,9 @@ public class EventResourceController {
     }
 
     @PostMapping("/recurringMeeting")
-    public RecurringEvent postMethodName(@RequestBody RecurringEvent recurringEvent) {
+    public ResponseEntity<String> postMethodName(@RequestBody RecurringEvent recurringEvent) {
         eventResourceService.saveRecur(recurringEvent);
-        return recurringEvent;
+        return new ResponseEntity<>("Created",HttpStatus.CREATED);
     }
 
 

@@ -1,0 +1,87 @@
+curr-> 2023-12-10T19:38:54.156+00:00
+
+// Create an event
+
+curl --location 'http://localhost:8080/api/events' \
+--header 'Content-Type: application/json' \
+--data '{
+    "host": "1",
+    "participants": [],
+    "startAt": "2023-12-10T14:30:00.156+00:00",
+    "endAt": "2023-12-10T15:30:00.156+00:00"
+}'
+
+
+
+// Find all event of a user
+
+curl --location 'http://localhost:8080/api/events?userId=0'
+
+
+
+
+// Get details of eventId
+
+curl --location 'http://localhost:8080/api/events/0'
+
+
+
+
+// Find conflict for a userId
+
+curl --location 'http://localhost:8080/api/events/conflicts?userId=0'
+
+
+
+
+// Find conflicting slots for a user
+
+curl --location 'http://localhost:8080/api/events/conflicts?userId=0'
+
+
+
+
+// Find findFavourableSlot 
+
+curl --location 'http://localhost:8080/api/events/findFavourableSlot' \
+--header 'Content-Type: application/json' \
+--data '{
+    "participants": [1,2,3],
+    "durationInMinutes": 60
+}'
+
+
+// create user
+
+curl --location 'http://localhost:8080/api/user' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "Ankit",
+    "email": "dsds@gmail.com"
+}'
+
+
+// Get all user 
+
+curl --location --request GET 'http://localhost:8080/api/user' 
+
+
+
+// Get a specific user
+
+curl --location --request GET 'http://localhost:8080/api/user/1'
+
+
+
+// update a user
+
+curl --location --request PUT 'http://localhost:8080/api/user/1' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "Verma",
+    "email": "dsdsds@gmail.com",
+    "updatedAt": "2023-12-10T20:15:08.835+00:00",
+    "createdAt": "2023-12-10T20:15:08.835+00:00",
+    "id": 1
+}'
+

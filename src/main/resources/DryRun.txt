@@ -1,0 +1,102 @@
+Last login: Sat Dec  9 10:20:03 on console
+ankitver@ankitver-mac ~ % curl --location 'http://localhost:8080/api/events' \
+--header 'Content-Type: application/json' \
+--data '{
+    "host": "1",
+    "participants": [],
+    "startAt": "2023-12-10T14:00:00.156+00:00",
+    "endAt": "2023-12-10T15:30:00.156+00:00"
+}'
+{"eventId":1,"host":1,"participants":[],"startAt":"2023-12-10T14:00:00.156+00:00","endAt":"2023-12-10T15:30:00.156+00:00"}%                    ankitver@ankitver-mac ~ % curl --location 'http://localhost:8080/api/events' \
+--header 'Content-Type: application/json' \
+--data '{
+    "host": "1",
+    "participants": [],
+    "startAt": "2023-12-10T19:00:00.156+00:00",
+    "endAt": "2023-12-10T21:00:00.156+00:00"
+}'
+
+{"eventId":2,"host":1,"participants":[],"startAt":"2023-12-10T19:00:00.156+00:00","endAt":"2023-12-10T21:00:00.156+00:00"}%                    ankitver@ankitver-mac ~ % curl --location 'http://localhost:8080/api/events' \
+--header 'Content-Type: application/json' \
+--data '{
+    "host": "1",
+    "participants": [],
+    "startAt": "2023-12-10T21:10:00.156+00:00",
+    "endAt": "2023-12-10T22:00:00.156+00:00"
+}'
+
+
+{"eventId":3,"host":1,"participants":[],"startAt":"2023-12-10T21:10:00.156+00:00","endAt":"2023-12-10T22:00:00.156+00:00"}%                    ankitver@ankitver-mac ~ % curl --location 'http://localhost:8080/api/events' \
+--header 'Content-Type: application/json' \
+--data '{
+    "host": "2",
+    "participants": [],
+    "startAt": "2023-12-10T21:00:00.156+00:00",
+    "endAt": "2023-12-10T22:00:00.156+00:00"
+}'
+
+{"eventId":4,"host":2,"participants":[],"startAt":"2023-12-10T21:00:00.156+00:00","endAt":"2023-12-10T22:00:00.156+00:00"}%                    ankitver@ankitver-mac ~ % curl --location 'http://localhost:8080/api/events' \
+--header 'Content-Type: application/json' \
+--data '{
+    "host": "3",
+    "participants": [],
+    "startAt": "2023-12-10T18:00:00.156+00:00",
+    "endAt": "2023-12-10T19:00:00.156+00:00"
+}'
+{"eventId":5,"host":3,"participants":[],"startAt":"2023-12-10T18:00:00.156+00:00","endAt":"2023-12-10T19:00:00.156+00:00"}%                    ankitver@ankitver-mac ~ % curl --location 'http://localhost:8080/api/events' \
+--header 'Content-Type: application/json' \
+--data '{
+    "host": "3",
+    "participants": [],
+    "startAt": "2023-12-10T22:00:00.156+00:00",
+    "endAt": "2023-12-10T23:59:00.156+00:00"
+}'
+{"eventId":6,"host":3,"participants":[],"startAt":"2023-12-10T22:00:00.156+00:00","endAt":"2023-12-10T23:59:00.156+00:00"}%                    ankitver@ankitver-mac ~ % curl --location 'http://localhost:8080/api/events' \
+--header 'Content-Type: application/json' \
+--data '{
+    "host": "3",
+    "participants": [],
+    "startAt": "2023-12-11T10:00:00.156+00:00",
+    "endAt": "2023-12-11T11:00:00.156+00:00"
+}'
+
+{"eventId":7,"host":3,"participants":[],"startAt":"2023-12-11T10:00:00.156+00:00","endAt":"2023-12-11T11:00:00.156+00:00"}%                    ankitver@ankitver-mac ~ % curl --location 'http://localhost:8080/api/events/findFavourableSlot' \
+--header 'Content-Type: application/json' \
+--data '{
+    "participants": [0,1,2],
+    "durationInMinutes": 60
+}'
+{"EndAt":"2023-12-10T23:00:00.156+00:00","StartAt":"2023-12-10T22:00:00.156+00:00"}%                                                           ankitver@ankitver-mac ~ % 
+ankitver@ankitver-mac ~ % 
+ankitver@ankitver-mac ~ % curl --location 'http://localhost:8080/api/events/conflicts?userId=0'
+{"timestamp":"2023-12-10T19:50:21.719+00:00","status":500,"error":"Internal Server Error","trace":"java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0\n\tat java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:100)\n\tat java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:106)\n\tat java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:302)\n\tat java.base/java.util.Objects.checkIndex(Objects.java:385)\n\tat java.base/java.util.ArrayList.get(ArrayList.java:427)\n\tat com.soul.calendar.service.EventResourceServiceImpl.findConflictsByUserId(EventResourceServiceImpl.java:114)\n\tat com.soul.calendar.rest.EventResourceController.listEventConflictsByUserId(EventResourceController.java:64)\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:580)\n\tat org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:254)\n\tat org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:182)\n\tat org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)\n\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:917)\n\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:829)\n\tat org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)\n\tat org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)\n\tat org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)\n\tat org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)\n\tat org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)\n\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)\n\tat org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)\n\tat jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\n\tat org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\n\tat org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\n\tat org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\n\tat org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)\n\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\n\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)\n\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)\n\tat org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)\n\tat org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)\n\tat org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)\n\tat org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)\n\tat org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)\n\tat org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)\n\tat org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340)\n\tat org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)\n\tat org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)\n\tat org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)\n\tat org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)\n\tat org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)\n\tat org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)\n\tat org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)\n\tat org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)\n\tat java.base/java.lang.Thread.run(Thread.java:1583)\n","message":"Index 0 out of bounds for length 0","path":"/api/events/conflicts"}%                                                                              ankitver@ankitver-mac ~ % curl --location 'http://localhost:8080/api/events/conflicts?userId=0'
+ankitver@ankitver-mac ~ % 
+ankitver@ankitver-mac ~ % 
+ankitver@ankitver-mac ~ % 
+ankitver@ankitver-mac ~ % 
+ankitver@ankitver-mac ~ % 
+ankitver@ankitver-mac ~ % 
+ankitver@ankitver-mac ~ % 
+ankitver@ankitver-mac ~ % 
+ankitver@ankitver-mac ~ % curl --location 'http://localhost:8080/api/events/findFavourableSlot' \
+--header 'Content-Type: application/json' \
+--data '{
+    "participants": [1,2,3],
+    "durationInMinutes": 60
+}'
+
+
+{"EndAt":"2023-12-11T00:59:00.156+00:00","StartAt":"2023-12-10T23:59:00.156+00:00"}%                                                           ankitver@ankitver-mac ~ % curl --location 'http://localhost:8080/api/events/conflicts?userId=1'  
+{}%                                                                                                                                            ankitver@ankitver-mac ~ % curl --location 'http://localhost:8080/api/events' \
+--header 'Content-Type: application/json' \
+--data '{
+    "host": "1",
+    "participants": [],
+    "startAt": "2023-12-10T14:30:00.156+00:00",
+    "endAt": "2023-12-10T15:30:00.156+00:00"
+}'
+{"eventId":8,"host":1,"participants":[],"startAt":"2023-12-10T14:30:00.156+00:00","endAt":"2023-12-10T15:30:00.156+00:00"}%                    ankitver@ankitver-mac ~ % curl --location 'http://localhost:8080/api/events/conflicts?userId=1'
+{"0":[{"eventId":1,"host":1,"startAt":"2023-12-10T14:00:00.156+00:00","endAt":"2023-12-10T15:30:00.156+00:00","createdAt":"2023-12-10T19:46:06.304+00:00","updatedAt":"2023-12-10T19:46:06.304+00:00"},{"eventId":8,"host":1,"startAt":"2023-12-10T14:30:00.156+00:00","endAt":"2023-12-10T15:30:00.156+00:00","createdAt":"2023-12-10T19:52:27.542+00:00","updatedAt":"2023-12-10T19:52:27.542+00:00"}]}%                                   ankitver@ankitver-mac ~ % 
+
+
+
